@@ -12,7 +12,7 @@ class SharedPrefManager {
   SharedPrefManager._();
 
   Future<SharedPreferences?> _getInstance() async {
-    return _prefs ??= await _getInstance();
+    return _prefs ??= await SharedPreferences.getInstance();
   }
 
   Future<bool> setString(String key, String value) async {
