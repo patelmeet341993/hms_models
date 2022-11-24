@@ -26,8 +26,8 @@ abstract class DatePresentation {
     return DateFormat('yyyy-MM-dd').format(dateTime);
   }
 
-  static String ddMMMMyyyy(DateTime dateTime) {
-    // DateTime dateTime = dateTime;
+  static String ddMMMMyyyyTimeStamp(Timestamp timeStamp) {
+    DateTime dateTime = timeStamp.toDate();
     return DateFormat('dd, MMMM yyyy').format(dateTime);
   }
 
