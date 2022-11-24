@@ -12,7 +12,6 @@ class MyUtils {
       await Clipboard.setData(ClipboardData(text: string));
       if(context != null) {
         MyToast.showSuccess(context: context, msg: "Copied");
-        // Snakbar().show_info_snakbar(context, "Copied");
       }
     }
   }
