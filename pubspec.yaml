@@ -11,12 +11,18 @@ dependencies:
   flutter:
     sdk: flutter
   equatable: ^2.0.5
-  cloud_firestore: ^3.4.6
   intl: ^0.17.0
   shared_preferences: ^2.0.15
   uuid: ^3.0.6
   logger: ^1.1.0
   fluttertoast: ^8.0.9
+
+  firebase_core: ^2.3.0
+  firebase_auth: ^4.1.3 # authentication
+  cloud_firestore: ^4.1.0 # firestore database
+  firebase_messaging: ^14.1.1 # notifications
+  firebase_analytics: ^10.0.6 # analytics
+  firebase_crashlytics: ^3.0.6 # crashlytics
 
 dev_dependencies:
   flutter_test:
