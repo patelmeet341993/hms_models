@@ -6,6 +6,7 @@ abstract class DatePresentation {
     DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(int.parse(timeStamp));
     return DateFormat('HH:mm:ss').format(dateTime);
   }
+
   static String ddMMyyyyFormatter(String timeStamp) {
     DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(int.parse(timeStamp));
     return DateFormat('dd/MM/yyyy').format(dateTime);
@@ -29,6 +30,11 @@ abstract class DatePresentation {
   static String ddMMMMyyyyTimeStamp(Timestamp timeStamp) {
     DateTime dateTime = timeStamp.toDate();
     return DateFormat('dd, MMMM yyyy').format(dateTime);
+  }
+
+  static String hhMM(Timestamp timeStamp) {
+    DateTime dateTime = timeStamp.toDate();
+    return DateFormat('HH:mm a').format(dateTime);
   }
 
   static DateTime timeStampToDate(String timeStamp) {
