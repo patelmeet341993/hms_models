@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hms_models/hms_models.dart' show ParsingHelper, MyUtils;
 
 class PatientModel {
-  String id = "", name = "", profilePicture = "", bloodGroup = "", gender = "";
+  String id = "", name = "", profilePicture = "", bloodGroup = "", gender = "", primaryMobile = "";
   Timestamp? dateOfBirth, createdTime;
   int totalVisits = 0;
   bool active = false;
@@ -16,6 +16,7 @@ class PatientModel {
     this.profilePicture = "",
     this.bloodGroup = "",
     this.gender = "",
+    this.primaryMobile = "",
     this.dateOfBirth,
     this.createdTime,
     this.totalVisits = 0,
@@ -40,6 +41,7 @@ class PatientModel {
     profilePicture = ParsingHelper.parseStringMethod(map['profilePicture']);
     bloodGroup = ParsingHelper.parseStringMethod(map['bloodGroup']);
     gender = ParsingHelper.parseStringMethod(map['gender']);
+    primaryMobile = ParsingHelper.parseStringMethod(map['primaryMobile']);
     dateOfBirth = ParsingHelper.parseTimestampMethod(map['dateOfBirth']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     totalVisits = ParsingHelper.parseIntMethod(map['totalVisits']);
@@ -54,6 +56,7 @@ class PatientModel {
       "profilePicture" : profilePicture,
       "bloodGroup" : bloodGroup,
       "gender" : gender,
+      "primaryMobile" : primaryMobile,
       "dateOfBirth" : dateOfBirth,
       "createdTime" : toJson ? createdTime?.toDate().toIso8601String() : createdTime,
       "totalVisits" : totalVisits,
