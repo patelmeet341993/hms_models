@@ -54,16 +54,16 @@ class Spacing {
     return Spacing.only(left: spacing, right: spacing);
   }
 
-  static x(double spacing) {
+  static EdgeInsetsGeometry x(double spacing) {
     return Spacing.only(left: spacing, right: spacing);
   }
 
-  static xy(double xSpacing, double ySpacing) {
+  static EdgeInsetsGeometry xy(double xSpacing, double ySpacing) {
     return Spacing.only(
         left: xSpacing, right: xSpacing, top: ySpacing, bottom: ySpacing);
   }
 
-  static y(double spacing) {
+  static EdgeInsetsGeometry y(double spacing) {
     return Spacing.only(top: spacing, bottom: spacing);
   }
 
