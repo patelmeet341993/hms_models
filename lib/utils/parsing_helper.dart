@@ -3,7 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 
-import 'my_print.dart';
+import 'package:hms_models/hms_models.dart' show MyPrint;
 
 class ParsingHelper {
   static String parseStringMethod(dynamic value, {String defaultValue = ""}) {
