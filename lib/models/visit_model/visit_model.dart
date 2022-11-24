@@ -21,7 +21,7 @@ class VisitModel {
     this.patientId = "",
     this.currentDoctor = "",
     this.previousVisitId = "",
-    this.doctors = const <String, String>{},
+    Map<String, String>? doctors,
     this.createdTime,
     this.updatedTime,
     this.completedTime,
@@ -30,13 +30,19 @@ class VisitModel {
     this.isPrescribed = false,
     this.isTreatmentActiveStream = false,
     this.vitals,
-    this.diagnosis = const <DiagnosisModel>[],
-    this.visitBillings = const <String, VisitBillingModel>{},
+    List<DiagnosisModel>? diagnosis,
+    Map<String, VisitBillingModel>? visitBillings,
     this.pharmaBilling,
     this.patientMetaModel,
-    this.treatmentActivity = const <TreatmentActivityModel>[],
-    this.treatmentActivityDetailedLog = const <TreatmentActivityModel>[]
-  });
+    List<TreatmentActivityModel>? treatmentActivity,
+    List<TreatmentActivityModel>? treatmentActivityDetailedLog,
+  }) {
+    this.doctors = doctors ?? <String, String>{};
+    this.diagnosis = diagnosis ?? <DiagnosisModel>[];
+    this.visitBillings = visitBillings ?? <String, VisitBillingModel>{};
+    this.treatmentActivity = treatmentActivity ?? <TreatmentActivityModel>[];
+    this.treatmentActivityDetailedLog = treatmentActivityDetailedLog ?? <TreatmentActivityModel>[];
+  }
 
   VisitModel.fromMap(Map<String, dynamic> map) {
     _initializeFromMap(map);

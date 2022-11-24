@@ -13,8 +13,10 @@ class PrescriptionModel {
     this.repeatDurationDays = 1,
     this.totalDays = 0,
     this.medicineType = "",
-    this.doses = const <PrescriptionMedicineDoseModel>[],
-  });
+    List<PrescriptionMedicineDoseModel>? doses,
+  }) {
+    this.doses = doses ?? <PrescriptionMedicineDoseModel>[];
+  }
 
   PrescriptionModel.fromMap(Map<String, dynamic> map) {
     _initializeFromMap(map);

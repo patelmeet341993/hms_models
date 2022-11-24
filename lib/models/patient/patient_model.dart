@@ -20,9 +20,11 @@ class PatientModel {
     this.createdTime,
     this.totalVisits = 0,
     this.active = false,
-    this.userMobiles = const [],
+    List<String>? userMobiles,
    // this.visitDataHistory = const {},
-  });
+  }) {
+    this.userMobiles = userMobiles ?? <String>[];
+  }
 
   PatientModel.fromMap(Map<String, dynamic> map) {
     _initializeFromMap(map);

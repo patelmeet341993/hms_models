@@ -16,9 +16,11 @@ class PharmaBillingModel {
     this.baseAmount = 0,
     this.discount = 0,
     this.totalAmount = 0,
-    this.items = const <PharmaBillingItemModel>[],
+    List<PharmaBillingItemModel>? items,
     this.createdTime,
-  });
+  }) {
+    this.items = items ?? <PharmaBillingItemModel>[];
+  }
 
   PharmaBillingModel.fromMap(Map<String, dynamic> map) {
     _initializeFromMap(map);

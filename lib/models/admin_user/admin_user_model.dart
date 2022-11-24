@@ -16,10 +16,12 @@ class AdminUserModel {
     this.role = "",
     this.description = "",
     this.imageUrl = "",
-    this.scannerData = const <String, dynamic>{},
+    Map<String, dynamic>? scannerData,
     this.isActive = false,
     this.createdTime,
-  });
+  }) {
+    this.scannerData = scannerData ?? <String, dynamic>{};
+  }
 
   AdminUserModel.fromMap(Map<String, dynamic> map) {
     _initializeFromMap(map);

@@ -7,8 +7,10 @@ class DiagnosisModel {
   DiagnosisModel({
     this.doctorId = "",
     this.diagnosisDescription = "",
-    this.prescription = const <PrescriptionModel>[],
-  });
+    List<PrescriptionModel>? prescription,
+  }) {
+    this.prescription = prescription ?? <PrescriptionModel>[];
+  }
 
   DiagnosisModel.fromMap(Map<String, dynamic> map) {
     _initializeFromMap(map);
