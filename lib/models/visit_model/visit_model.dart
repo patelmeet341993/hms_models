@@ -3,7 +3,7 @@ import 'package:hms_models/hms_models.dart' show ParsingHelper, MyUtils, VitalsM
         PatientMetaModel, TreatmentActivityModel;
 
 class VisitModel {
-  String id = "", patientId = "", currentDoctor = "", previousVisitId = "";
+  String id = "", patientId = "", patientName = "", description = "", previousVisitId = "", currentDoctorId = "", currentDoctorName = "", hospitalId = "";
   Map<String, String> doctors = {};
   Timestamp? createdTime, updatedTime, completedTime;
   double weight = 0;
@@ -19,8 +19,12 @@ class VisitModel {
   VisitModel({
     this.id = "",
     this.patientId = "",
-    this.currentDoctor = "",
+    this.patientName = "",
+    this.description = "",
     this.previousVisitId = "",
+    this.currentDoctorId = "",
+    this.currentDoctorName = "",
+    this.hospitalId = "",
     Map<String, String>? doctors,
     this.createdTime,
     this.updatedTime,
@@ -55,8 +59,12 @@ class VisitModel {
   void _initializeFromMap(Map<String, dynamic> map) {
     id = ParsingHelper.parseStringMethod(map['id']);
     patientId = ParsingHelper.parseStringMethod(map['patientId']);
-    currentDoctor = ParsingHelper.parseStringMethod(map['currentDoctor']);
+    patientName = ParsingHelper.parseStringMethod(map['patientName']);
+    description = ParsingHelper.parseStringMethod(map['description']);
     previousVisitId = ParsingHelper.parseStringMethod(map['previousVisitId']);
+    currentDoctorId = ParsingHelper.parseStringMethod(map['currentDoctorId']);
+    currentDoctorName = ParsingHelper.parseStringMethod(map['currentDoctorName']);
+    hospitalId = ParsingHelper.parseStringMethod(map['hospitalId']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
     completedTime = ParsingHelper.parseTimestampMethod(map['completedTime']);
@@ -133,8 +141,12 @@ class VisitModel {
     return <String, dynamic>{
       "id" : id,
       "patientId" : patientId,
-      "currentDoctor" : currentDoctor,
+      "patientName" : patientName,
+      "description" : description,
       "previousVisitId" : previousVisitId,
+      "currentDoctorId" : currentDoctorId,
+      "currentDoctorName" : currentDoctorName,
+      "hospitalId" : hospitalId,
       "createdTime" : createdTime,
       "updatedTime" : updatedTime,
       "completedTime" : completedTime,

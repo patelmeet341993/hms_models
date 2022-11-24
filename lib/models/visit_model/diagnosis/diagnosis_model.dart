@@ -1,11 +1,12 @@
 import 'package:hms_models/hms_models.dart' show ParsingHelper, MyUtils, PrescriptionModel;
 
 class DiagnosisModel {
-  String doctorId = "", diagnosisDescription = "";
+  String doctorId = "", doctorName = "", diagnosisDescription = "";
   List<PrescriptionModel> prescription = <PrescriptionModel>[];
 
   DiagnosisModel({
     this.doctorId = "",
+    this.doctorName = "",
     this.diagnosisDescription = "",
     List<PrescriptionModel>? prescription,
   }) {
@@ -22,6 +23,7 @@ class DiagnosisModel {
 
   void _initializeFromMap(Map<String, dynamic> map) {
     doctorId = ParsingHelper.parseStringMethod(map['doctorId']);
+    doctorName = ParsingHelper.parseStringMethod(map['doctorName']);
     diagnosisDescription = ParsingHelper.parseStringMethod(map['diagnosisDescription']);
 
     List<PrescriptionModel> prescriptionMain = <PrescriptionModel>[];
@@ -39,6 +41,7 @@ class DiagnosisModel {
   Map<String, dynamic> toMap({bool toJson = false}) {
     return <String, dynamic>{
       "doctorId" : doctorId,
+      "doctorName" : doctorName,
       "diagnosisDescription" : diagnosisDescription,
       "prescription" : prescription.map((e) => e.toMap(toJson: toJson)).toList(),
     };
