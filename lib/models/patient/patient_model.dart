@@ -6,7 +6,7 @@ class PatientModel {
   String id = "", name = "", profilePicture = "", bloodGroup = "", gender = "", primaryMobile = "";
   Timestamp? dateOfBirth, createdTime;
   int totalVisits = 0;
-  bool active = false;
+  bool active = false, isProfileComplete = false;
   List<String> userMobiles = [];
   //Map<String,Timestamp> visitDataHistory = {};
 
@@ -21,6 +21,7 @@ class PatientModel {
     this.createdTime,
     this.totalVisits = 0,
     this.active = false,
+    this.isProfileComplete = false,
     List<String>? userMobiles,
    // this.visitDataHistory = const {},
   }) {
@@ -46,6 +47,7 @@ class PatientModel {
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     totalVisits = ParsingHelper.parseIntMethod(map['totalVisits']);
     active = ParsingHelper.parseBoolMethod(map['active']);
+    isProfileComplete = ParsingHelper.parseBoolMethod(map['isProfileComplete']);
     userMobiles = ParsingHelper.parseListMethod<dynamic, String>(map['userMobiles']).toSet().toList();
   }
 
@@ -61,6 +63,7 @@ class PatientModel {
       "createdTime" : toJson ? createdTime?.toDate().toIso8601String() : createdTime,
       "totalVisits" : totalVisits,
       "active" : active,
+      "isProfileComplete" : isProfileComplete,
       "userMobiles" : userMobiles.toSet().toList(),
     };
   }
