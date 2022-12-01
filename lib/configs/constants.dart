@@ -1,5 +1,4 @@
-import '../backend/common/firestore_controller.dart';
-import 'typedefs.dart';
+import 'package:hms_models/hms_models.dart';
 
 class PatientGender {
   static const String male = "Male";
@@ -94,4 +93,25 @@ class TreatmentActivityStatus {
   static const String registered = "registered";
   static const String prescribed = "prescribed";
   static const String completed = "completed";
+}
+
+class QRCodeTypes {
+  static const String patient = "Patient";
+  static const String visit = "Visit";
+}
+
+class QRCodeGenerator {
+  static String generatePatientQRCode({required String patientId}) {
+    return MyUtils.encodeJson({
+      "id" : patientId,
+      "type" : QRCodeTypes.patient,
+    });
+  }
+
+  static String generateVisitQRCode({required String visitId}) {
+    return MyUtils.encodeJson({
+      "id" : visitId,
+      "type" : QRCodeTypes.visit,
+    });
+  }
 }
