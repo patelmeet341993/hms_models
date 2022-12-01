@@ -28,6 +28,7 @@ dependencies:
   ######
   fluttertoast: ^8.0.9
   lottie: ^1.4.2
+  font_awesome_flutter: ^10.2.1
 
   ###########
   # Firebase #
