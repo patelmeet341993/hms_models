@@ -67,7 +67,6 @@ export 'utils/parsing_helper.dart';
 export 'utils/shared_pref_manager.dart';
 export 'utils/size_config.dart';
 export 'view/components/qr_scanner_dialog.dart';
-export 'package:mobile_scanner/mobile_scanner.dart' hide GeoPoint;
 //endregion
 
 //region Firebase
@@ -77,4 +76,9 @@ export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';
 export 'package:firebase_analytics/firebase_analytics.dart';
 export 'package:firebase_crashlytics/firebase_crashlytics.dart';
+//endregion
+
+//region Packages
+export 'package:mobile_scanner/mobile_scanner.dart' hide GeoPoint;
+export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //endregion
