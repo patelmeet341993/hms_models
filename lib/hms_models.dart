@@ -66,6 +66,8 @@ export 'utils/my_utils.dart';
 export 'utils/parsing_helper.dart';
 export 'utils/shared_pref_manager.dart';
 export 'utils/size_config.dart';
+export 'view/components/qr_scanner_dialog.dart';
+export 'package:mobile_scanner/mobile_scanner.dart' hide GeoPoint;
 //endregion
 
 //region Firebase
