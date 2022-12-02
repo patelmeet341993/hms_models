@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hms_models/models/qr_code/qr_code_data_model.dart';
 import 'package:uuid/uuid.dart';
 
 import 'package:hms_models/hms_models.dart' show MyPrint, MyToast, ParsingHelper;
@@ -51,7 +52,7 @@ class MyUtils {
     }
   }
 
-  static Future<String> scanQRAndGetData({required BuildContext context}) async {
+  static Future<String> scanQRAndGetRawData({required BuildContext context}) async {
     dynamic value = await showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -59,7 +60,23 @@ class MyUtils {
       },
     );
 
-    return ParsingHelper.parseStringMethod(value);
+    String data = ParsingHelper.parseStringMethod(value);
+
+    return data;
+  }
+
+  static Future<QRCodeDataModel> scanQRAndGetQRCodeDataModel({required BuildContext context}) async {
+    dynamic value = await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const QRScannerDialog();
+      },
+    );
+
+    String data = ParsingHelper.parseStringMethod(value);
+    QRCodeDataModel qrCodeDataModel = QRCodeDataModel.fromEncodedString(data);
+
+    return qrCodeDataModel;
   }
 }
 
