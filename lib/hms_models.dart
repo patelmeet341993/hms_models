@@ -24,6 +24,10 @@ export 'configs/typedefs.dart';
   //endregion
 
   //region Visit Model
+  export 'models/qr_code/qr_code_data_model.dart';
+  //endregion
+
+  //region Visit Model
 
     //region Diagnosis
     export 'models/visit_model/diagnosis/diagnosis_model.dart';
