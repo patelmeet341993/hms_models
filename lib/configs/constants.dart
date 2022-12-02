@@ -99,19 +99,3 @@ class QRCodeTypes {
   static const String patient = "Patient";
   static const String visit = "Visit";
 }
-
-class QRCodeGenerator {
-  static String generatePatientQRCode({required String patientId}) {
-    return MyUtils.encodeJson({
-      "id" : patientId,
-      "type" : QRCodeTypes.patient,
-    });
-  }
-
-  static String generateVisitQRCode({required String visitId}) {
-    return MyUtils.encodeJson({
-      "id" : visitId,
-      "type" : QRCodeTypes.visit,
-    });
-  }
-}
