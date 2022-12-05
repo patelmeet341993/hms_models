@@ -101,3 +101,11 @@ class QRCodeTypes {
   static const String patient = "Patient";
   static const String visit = "Visit";
 }
+
+class CloudinaryImageResize {
+  static const int patientImageSize = 350;
+}
+
+class CloudinaryFoldersName {
+  static const String patients = "patients";
+}
