@@ -2,7 +2,7 @@ import 'package:hms_models/hms_models.dart';
 
 class PatientRepository {
   Future<PatientModel?> getPatientModelFromPatientId({required String patientId}) async {
-    MyPrint.printOnConsole("PatientRepository().getPatientModelFromPatientId() called for patientId:$patientId");
+    MyPrint.printOnConsole("PatientRepository().getPatientModelFromPatientId() called for patientId:'$patientId'");
 
     PatientModel? patientModel;
 
