@@ -32,4 +32,10 @@ class CloudinaryController extends ChangeNotifier{
 
     return "";
   }
+
+  Future<bool> deleteImagesFromCloudinary({required List<String> images}) async {
+    bool isDeleted = await cloudinaryManager.deleteImagesFromCloudinary(images: images);
+
+    return isDeleted;
+  }
 }
