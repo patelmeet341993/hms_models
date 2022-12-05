@@ -1,9 +1,9 @@
 import 'dart:typed_data';
 
+import 'package:flutter/material.dart';
 import 'package:hms_models/hms_models.dart';
-import 'package:hms_models/utils/cloudinary_manager.dart';
 
-class CloudinaryController {
+class CloudinaryController extends ChangeNotifier{
   late CloudinaryManager cloudinaryManager;
 
   CloudinaryController({bool isDev = true}) {
