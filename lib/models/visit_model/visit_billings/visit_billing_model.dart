@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hms_models/hms_models.dart' show ParsingHelper, MyUtils;
 
 class VisitBillingModel {
-  String doctorId = "", doctorName = "", paymentId = "", paymentMode = "";
+  String doctorId = "", doctorName = "", paymentId = "", paymentMode = "", paymentStatus = "";
   double fee = 0, discount = 0, totalFees = 0;
   Timestamp? createdTime;
 
@@ -12,6 +12,7 @@ class VisitBillingModel {
     this.doctorName = "",
     this.paymentId = "",
     this.paymentMode = "",
+    this.paymentStatus = "",
     this.fee = 0,
     this.discount = 0,
     this.totalFees = 0,
@@ -31,6 +32,7 @@ class VisitBillingModel {
     doctorName = ParsingHelper.parseStringMethod(map['doctorName']);
     paymentId = ParsingHelper.parseStringMethod(map['paymentId']);
     paymentMode = ParsingHelper.parseStringMethod(map['paymentMode']);
+    paymentStatus = ParsingHelper.parseStringMethod(map['paymentStatus']);
     fee = ParsingHelper.parseDoubleMethod(map['fee']);
     discount = ParsingHelper.parseDoubleMethod(map['discount']);
     totalFees = ParsingHelper.parseDoubleMethod(map['totalFees']);
@@ -43,6 +45,7 @@ class VisitBillingModel {
       "doctorName" : doctorName,
       "paymentId" : paymentId,
       "paymentMode" : paymentMode,
+      "paymentStatus" : paymentStatus,
       "fee" : fee,
       "discount" : discount,
       "totalFees" : totalFees,
