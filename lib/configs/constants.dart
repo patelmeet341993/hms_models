@@ -89,10 +89,12 @@ class PaymentStatus {
 }
 
 class TreatmentActivityStatus {
-  static const String billPay = "billPay";
-  static const String registered = "registered";
-  static const String prescribed = "prescribed";
-  static const String completed = "completed";
+  static const String pharmaPay = "Pharma Pay";
+  static const String laboratoryPay = "Laboratory Pay";
+  static const String registered = "Registered";
+  static const String assigned = "Assigned";
+  static const String prescribed = "Prescribed";
+  static const String completed = "Completed";
 }
 
 class QRCodeTypes {
