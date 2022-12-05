@@ -17,6 +17,7 @@ dependencies:
   intl: ^0.17.0
   shared_preferences: ^2.0.15
   uuid: ^3.0.6
+  cloudinary_sdk: ^4.0.2+10
 
   ##############
   # QR Scanner #
