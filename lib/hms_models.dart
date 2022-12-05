@@ -2,9 +2,11 @@ library hms_models;
 
 //region Backend
 export 'backend/common/firestore_controller.dart';
+export 'backend/common/cloudinary_controller.dart';
 //endregion
 
 //region Configs
+export 'configs/cloudinary_transformations.dart';
 export 'configs/constants.dart';
 export 'configs/typedefs.dart';
 //endregion
@@ -60,6 +62,7 @@ export 'configs/typedefs.dart';
 //endregion
 
 //region Utils
+export 'utils/cloudinary_manager.dart';
 export 'utils/date_presentation.dart';
 export 'utils/extensions.dart';
 export 'utils/my_http_overrides.dart';
@@ -85,4 +88,5 @@ export 'package:firebase_crashlytics/firebase_crashlytics.dart';
 //region Packages
 export 'package:mobile_scanner/mobile_scanner.dart' hide GeoPoint;
 export 'package:font_awesome_flutter/font_awesome_flutter.dart';
+export 'package:cloudinary_sdk/cloudinary_sdk.dart';
 //endregion
