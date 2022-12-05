@@ -51,7 +51,7 @@ class CloudinaryManager {
     }
 
     try {
-      CloudinaryResponse cloudinaryResponse = await cloudinary.deleteResources(cloudinaryImages: images.map((e) => CloudinaryImage(e)).toList());
+      CloudinaryResponse cloudinaryResponse = await cloudinary.deleteResources(urls: images);
       return cloudinaryResponse.isSuccessful && cloudinaryResponse.isResultOk;
     }
     catch(e, s) {
