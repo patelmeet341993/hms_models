@@ -1,11 +1,12 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hms_models/models/qr_code/qr_code_data_model.dart';
 import 'package:uuid/uuid.dart';
 
-import 'package:hms_models/hms_models.dart' show MyPrint, MyToast, ParsingHelper;
+import 'package:hms_models/hms_models.dart' show FirestoreController, MyPrint, MyToast, NewDocumentDataModel, ParsingHelper;
 
 import '../view/components/qr_scanner_dialog.dart';
 
@@ -50,6 +51,34 @@ class MyUtils {
       MyPrint.printOnConsole(s);
       return null;
     }
+  }
+
+  static Future<NewDocumentDataModel> getNewDocIdAndTimeStamp({bool isGetTimeStamp = true}) async {
+    String docId = FirestoreController.documentReference(collectionName: "collectionName",).id;
+    Timestamp timestamp = Timestamp.now();
+
+    if(isGetTimeStamp) {
+      await FirestoreController.collectionReference(collectionName: "timestamp_collection",).add({"temp_timestamp": FieldValue.serverTimestamp()})
+        .then((DocumentReference<Map<String, dynamic>> reference) async {
+          docId = reference.id;
+
+          if(isGetTimeStamp) {
+            DocumentSnapshot<Map<String, dynamic>> documentSnapshot = await reference.get();
+            timestamp = documentSnapshot.data()?['temp_timestamp'];
+          }
+
+          reference.delete();
+        })
+        .catchError((e, s) {
+          // reportErrorToCrashlytics(e, s, reason: "Error in DataController.getNewDocId()");
+        });
+
+      if(docId.isEmpty) {
+        docId = FirestoreController.documentReference(collectionName: "collectionName",).id;
+      }
+    }
+
+    return NewDocumentDataModel(docId: docId, timestamp: timestamp);
   }
 
   static Future<String> scanQRAndGetRawData({required BuildContext context}) async {
