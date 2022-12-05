@@ -25,7 +25,7 @@ class QRCodeDataModel {
   }
 
   String toEncodedString() {
-    return MyUtils.encodeJson(toMap);
+    return MyUtils.encodeJson(toMap());
   }
 
   @override
