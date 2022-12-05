@@ -24,4 +24,29 @@ class PatientRepository {
 
     return patientModel;
   }
+
+  Future<bool> createUpdatePatientWithPatientModel({required PatientModel patientModel, bool isCreate = true}) async {
+    String tag = MyUtils.getUniqueIdFromUuid();
+
+    MyPrint.printOnConsole("PatientRepository().createPatientWithPatientModel() called with patientModel:'$patientModel'", tag: tag);
+
+    bool isUserCreated = false;
+
+    if(patientModel.id.isEmpty) {
+      return isUserCreated;
+    }
+
+    try {
+      await FirebaseNodes.patientDocumentReference(patientId: patientModel.id).set(patientModel.toMap(), SetOptions(merge: !isCreate));
+
+      MyPrint.printOnConsole("Patient Created from PatientRepository().createPatientWithPatientModel() with patientId:'${patientModel.id}'", tag: tag);
+      isUserCreated = true;
+    }
+    catch(e,s) {
+      MyPrint.printOnConsole("Error in PatientRepository().createPatientWithPatientModel():'$e'", tag: tag);
+      MyPrint.printOnConsole(s ,tag: tag);
+    }
+
+    return isUserCreated;
+  }
 }
