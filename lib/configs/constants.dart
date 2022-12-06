@@ -109,3 +109,41 @@ class CloudinaryImageResize {
 class CloudinaryFoldersName {
   static const String patients = "patients";
 }
+
+class BloodGroup {
+/*
+Got from 'https://www.nhs.uk/conditions/blood-groups/'
+A RhD positive (A+)
+A RhD negative (A-)
+B RhD positive (B+)
+B RhD negative (B-)
+O RhD positive (O+)
+O RhD negative (O-)
+AB RhD positive (AB+)
+AB RhD negative (AB-)
+*/
+
+  static const String aPositive = "A+";
+  static const String aNegative = "A-";
+  static const String bPositive = "B+";
+  static const String bNegative = "B-";
+  static const String oPositive = "O+";
+  static const String oNegative = "O-";
+  static const String abPositive = "AB+";
+  static const String abNegative = "AB-";
+
+  static const List<String> bloodGroupsList = [
+    aPositive,
+    aNegative,
+    bPositive,
+    bNegative,
+    oPositive,
+    oNegative,
+    abPositive,
+    abNegative,
+  ];
+
+  static bool isValidBloodGroup({required String bloodGroup}) {
+    return bloodGroupsList.contains(bloodGroup);
+  }
+}
