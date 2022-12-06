@@ -76,17 +76,48 @@ export 'utils/size_config.dart';
 export 'view/components/qr_scanner_dialog.dart';
 //endregion
 
-//region Firebase
-export 'package:firebase_core/firebase_core.dart';
-export 'package:firebase_auth/firebase_auth.dart';
-export 'package:cloud_firestore/cloud_firestore.dart';
-export 'package:firebase_messaging/firebase_messaging.dart';
-export 'package:firebase_analytics/firebase_analytics.dart';
-export 'package:firebase_crashlytics/firebase_crashlytics.dart';
-//endregion
-
 //region Packages
-export 'package:mobile_scanner/mobile_scanner.dart' hide GeoPoint;
-export 'package:font_awesome_flutter/font_awesome_flutter.dart';
-export 'package:cloudinary_sdk/cloudinary_sdk.dart';
+
+  //region Utils
+  export 'package:equatable/equatable.dart';
+  export 'package:intl/intl.dart';
+  export 'package:shared_preferences/shared_preferences.dart';
+  export 'package:uuid/uuid.dart';
+  export 'package:cloudinary_sdk/cloudinary_sdk.dart';
+  export 'package:connectivity_plus/connectivity_plus.dart';
+  export 'package:qr_flutter/qr_flutter.dart';
+  export 'package:file_picker/file_picker.dart';
+  export 'package:image_picker/image_picker.dart';
+  //endregion
+
+  //region QR Scanner
+  export 'package:mobile_scanner/mobile_scanner.dart' hide GeoPoint;
+  //endregion
+
+  //region UI
+  export 'package:fluttertoast/fluttertoast.dart';
+  export 'package:lottie/lottie.dart';
+  export 'package:font_awesome_flutter/font_awesome_flutter.dart';
+  export 'package:cupertino_icons/cupertino_icons.dart';
+  export 'package:loading_animation_widget/loading_animation_widget.dart';
+  export 'package:flutter_spinkit/flutter_spinkit.dart';
+  export 'package:google_fonts/google_fonts.dart';
+  export 'package:flutter_svg/flutter_svg.dart';
+  export 'package:flutter_feather_icons/flutter_feather_icons.dart';
+  export 'package:cached_network_image/cached_network_image.dart';
+  //endregion
+
+  // region UI
+  export 'package:provider/provider.dart';
+  //endregion
+
+  //region Firebase
+  export 'package:firebase_core/firebase_core.dart';
+  export 'package:firebase_auth/firebase_auth.dart';
+  export 'package:cloud_firestore/cloud_firestore.dart';
+  export 'package:firebase_messaging/firebase_messaging.dart';
+  export 'package:firebase_analytics/firebase_analytics.dart';
+  export 'package:firebase_crashlytics/firebase_crashlytics.dart';
+  //endregion
+
 //endregion
