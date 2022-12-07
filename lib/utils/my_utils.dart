@@ -107,6 +107,10 @@ class MyUtils {
 
     return qrCodeDataModel;
   }
+
+  static void hideShowKeyboard({bool isHide = true}) {
+    SystemChannels.textInput.invokeMethod(isHide ? 'TextInput.hide' : 'TextInput.show');
+  }
 }
 
 
