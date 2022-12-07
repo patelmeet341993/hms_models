@@ -1,6 +1,12 @@
 import '../../hms_models.dart';
 
 class VisitController {
+  late VisitRepository visitRepository;
+
+  VisitController({VisitRepository? repository}) {
+    visitRepository = repository ?? VisitRepository();
+  }
+
   Future<VisitModel?> createNewVisit({
     String doctorId = "",
     String doctorName = "",
