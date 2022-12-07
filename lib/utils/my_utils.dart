@@ -37,7 +37,7 @@ class MyUtils {
     }
     catch(e, s) {
       MyPrint.printOnConsole("Error in MyUtils.encodeJson():$e");
-      MyPrint.printOnConsole(s);
+      MyPrint.logOnConsole(s);
       return "";
     }
   }
@@ -48,7 +48,7 @@ class MyUtils {
     }
     catch(e, s) {
       MyPrint.printOnConsole("Error in MyUtils.decodeJson():$e");
-      MyPrint.printOnConsole(s);
+      MyPrint.logOnConsole(s);
       return null;
     }
   }
