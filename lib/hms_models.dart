@@ -1,8 +1,20 @@
 library hms_models;
 
 //region Backend
-export 'backend/common/firestore_controller.dart';
-export 'backend/common/cloudinary_controller.dart';
+  //region Common
+  export 'backend/common/firestore_controller.dart';
+  export 'backend/common/cloudinary_controller.dart';
+  //endregion
+
+  //region Patient
+  export 'backend/patient/patient_controller.dart';
+  export 'backend/patient/patient_repository.dart';
+  //endregion
+
+  //region Visit
+  export 'backend/visit/visit_controller.dart';
+  export 'backend/visit/visit_repository.dart';
+  //endregion
 //endregion
 
 //region Configs
