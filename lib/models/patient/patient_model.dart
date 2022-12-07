@@ -59,7 +59,7 @@ class PatientModel {
       "bloodGroup" : bloodGroup,
       "gender" : gender,
       "primaryMobile" : primaryMobile,
-      "dateOfBirth" : dateOfBirth,
+      "dateOfBirth" : toJson ? dateOfBirth?.toDate().toIso8601String() : dateOfBirth,
       "createdTime" : toJson ? createdTime?.toDate().toIso8601String() : createdTime,
       "totalVisits" : totalVisits,
       "active" : active,

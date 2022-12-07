@@ -52,8 +52,8 @@ class HospitalModel {
       "address" : address,
       "email" : email,
       "contactNumbers" : contactNumbers,
-      "createdTime" : createdTime,
-      "updatedTime" : updatedTime,
+      "createdTime" : toJson ? createdTime?.toDate().toIso8601String() : createdTime,
+      "updatedTime" : toJson ? updatedTime?.toDate().toIso8601String() : updatedTime,
     };
   }
 
