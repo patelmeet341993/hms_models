@@ -8,7 +8,7 @@ class PatientModel {
   int totalVisits = 0;
   bool active = false, isProfileComplete = false;
   List<String> userMobiles = [];
-  //Map<String,Timestamp> visitDataHistory = {};
+  Map<String, Timestamp> activeVisits = <String, Timestamp>{};
 
   PatientModel({
     this.id = "",
@@ -23,9 +23,11 @@ class PatientModel {
     this.active = false,
     this.isProfileComplete = false,
     List<String>? userMobiles,
+    Map<String, Timestamp>? activeVisits,
    // this.visitDataHistory = const {},
   }) {
     this.userMobiles = userMobiles ?? <String>[];
+    this.activeVisits = activeVisits ?? <String, Timestamp>{};
   }
 
   PatientModel.fromMap(Map<String, dynamic> map) {
@@ -49,6 +51,15 @@ class PatientModel {
     active = ParsingHelper.parseBoolMethod(map['active']);
     isProfileComplete = ParsingHelper.parseBoolMethod(map['isProfileComplete']);
     userMobiles = ParsingHelper.parseListMethod<dynamic, String>(map['userMobiles']).toSet().toList();
+
+    activeVisits.clear();
+    Map<String, dynamic> activeVisitsMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['activeVisits']);
+    activeVisitsMap.forEach((key, value) {
+      Timestamp? timeStamp = ParsingHelper.parseTimestampMethod(value);
+      if(timeStamp != null) {
+        activeVisits[key] = timeStamp;
+      }
+    });
   }
 
   Map<String, dynamic> toMap({bool toJson = false}) {
@@ -65,6 +76,7 @@ class PatientModel {
       "active" : active,
       "isProfileComplete" : isProfileComplete,
       "userMobiles" : userMobiles.toSet().toList(),
+      "activeVisits" : toJson ? activeVisits.map((key, value) => MapEntry(key, value.toDate().toIso8601String())) : activeVisits,
     };
   }
 
