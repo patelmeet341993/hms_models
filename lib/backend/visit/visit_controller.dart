@@ -60,6 +60,8 @@ class VisitController {
 
       await FirebaseNodes.visitDocumentReference(visitId: visitModel.id).set(visitModel.toMap(),);
 
+      PatientController().addVisitIdInActiveVisits(patientId: patientModel.id, visitId: visitModel.id);
+
       return visitModel;
     }
     catch(e, s) {
