@@ -49,4 +49,29 @@ class PatientRepository {
 
     return isUserCreated;
   }
+
+  Future<bool> updatePatientDataInFirestoreFromMap({required String patientId, required Map<String, dynamic> data}) async {
+    String tag = MyUtils.getUniqueIdFromUuid();
+
+    MyPrint.printOnConsole("PatientRepository().updatePatientDataFromMap() called with patientId:'$patientId', data:'$data'", tag: tag);
+
+    bool isUpdated = false;
+
+    if(patientId.isEmpty) {
+      return isUpdated;
+    }
+
+    try {
+      await FirebaseNodes.patientDocumentReference(patientId: patientId).set(data, SetOptions(merge: true));
+
+      MyPrint.printOnConsole("Patient Updated from PatientRepository().updatePatientDataFromMap() with patientId:'$patientId'", tag: tag);
+      isUpdated = true;
+    }
+    catch(e,s) {
+      MyPrint.printOnConsole("Error in PatientRepository().updatePatientDataFromMap():'$e'", tag: tag);
+      MyPrint.printOnConsole(s ,tag: tag);
+    }
+
+    return isUpdated;
+  }
 }
