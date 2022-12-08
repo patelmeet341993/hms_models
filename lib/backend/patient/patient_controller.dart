@@ -62,6 +62,7 @@ class PatientController {
       if(bloodGroup != null) patientData['bloodGroup'] = bloodGroup;
       if(profilePicture != null) patientData['profilePicture'] = profilePicture;
       if(isProfileComplete != null) patientData['isProfileComplete'] = isProfileComplete;
+      MyPrint.printOnConsole("patientData to update:$patientData", tag: tag);
 
       if(patientData.isNotEmpty) {
         isUpdated = await patientRepository.updatePatientDataInFirestoreFromMap(patientId: patientId, data: patientData);
