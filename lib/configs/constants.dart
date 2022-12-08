@@ -147,3 +147,7 @@ AB RhD negative (AB-)
     return bloodGroupsList.contains(bloodGroup);
   }
 }
+
+class FirestoreExceptionCodes {
+  static const String notFound = "not-found";
+}
