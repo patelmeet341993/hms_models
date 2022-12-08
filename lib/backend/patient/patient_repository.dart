@@ -62,7 +62,8 @@ class PatientRepository {
     }
 
     try {
-      await FirebaseNodes.patientDocumentReference(patientId: patientId).set(data, SetOptions(merge: true));
+      // await FirebaseNodes.patientDocumentReference(patientId: patientId).set(data, SetOptions(merge: true));
+      await FirebaseNodes.patientDocumentReference(patientId: patientId).update(data);
 
       MyPrint.printOnConsole("Patient Updated from PatientRepository().updatePatientDataFromMap() with patientId:'$patientId'", tag: tag);
       isUpdated = true;
