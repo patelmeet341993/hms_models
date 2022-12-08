@@ -80,4 +80,32 @@ class PatientController {
 
     return isUpdated;
   }
+
+  Future<bool> addVisitIdInActiveVisits({required String patientId, required String visitId}) async {
+    String tag = MyUtils.getUniqueIdFromUuid();
+
+    MyPrint.printOnConsole("PatientController().addVisitIdInActiveVisits() called with patientId:'$patientId', visitId:'$visitId'", tag: tag);
+
+    bool isUpdated = false;
+
+    if(patientId.isEmpty || visitId.isEmpty) return isUpdated;
+
+    try {
+      Map<String, dynamic> firestoreData = <String, dynamic>{
+        "activeVisits.$visitId" : FieldValue.serverTimestamp(),
+      };
+
+      isUpdated = await patientRepository.updatePatientDataInFirestoreFromMap(
+        patientId: patientId,
+        data: firestoreData,
+      );
+      MyPrint.printOnConsole("isPatientUpdated:'$isUpdated'", tag: tag);
+    }
+    catch(e, s) {
+      MyPrint.printOnConsole("Error in PatientController().addVisitIdInActiveVisits():'$e'", tag: tag);
+      MyPrint.printOnConsole(s, tag: tag);
+    }
+
+    return isUpdated;
+  }
 }
