@@ -7,10 +7,10 @@ class PrescriptionMedicineDoseModel {
 
   PrescriptionMedicineDoseModel({
     this.doseTime = PrescriptionMedicineDoseTime.morning,
-    this.afterMeal = false,
-    this.beforeMeal = false,
     this.dose = "",
     this.doseCount = 0,
+    this.afterMeal = false,
+    this.beforeMeal = false,
   });
 
   PrescriptionMedicineDoseModel.fromMap(Map<String, dynamic> map) {
