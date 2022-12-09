@@ -117,9 +117,10 @@ export 'view/components/qr_scanner_dialog.dart';
   export 'package:flutter_svg/flutter_svg.dart';
   export 'package:flutter_feather_icons/flutter_feather_icons.dart';
   export 'package:cached_network_image/cached_network_image.dart';
+  export 'package:shimmer/shimmer.dart';
   //endregion
 
-  // region UI
+  // region State Management
   export 'package:provider/provider.dart';
   //endregion
 
