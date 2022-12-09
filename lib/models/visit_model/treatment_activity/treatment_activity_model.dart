@@ -28,8 +28,8 @@ class TreatmentActivityModel {
 
   Map<String, dynamic> toMap({bool toJson = false}){
     return  <String, dynamic>{
-      'createdTime' : createdTime,
-      'updatedTime' : updatedTime,
+      'createdTime' : toJson ? createdTime?.toDate().toIso8601String() : createdTime,
+      'updatedTime' : toJson ? updatedTime?.toDate().toIso8601String() : updatedTime,
       'treatmentActivityStatus' : treatmentActivityStatus,
     };
   }
