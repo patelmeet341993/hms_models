@@ -8,7 +8,7 @@ class VisitModel {
   Timestamp? createdTime, updatedTime, completedTime;
   double weight = 0;
   VitalsModel? vitals;
-  bool active = false,isPrescribed = false,isTreatmentActiveStream = false;
+  bool active = false,isAttendedByDoctor = false,isTreatmentActiveStream = false;
   List<DiagnosisModel> diagnosis = <DiagnosisModel>[];
   Map<String, VisitBillingModel> visitBillings = {};
   PharmaBillingModel? pharmaBilling;
@@ -31,7 +31,7 @@ class VisitModel {
     this.completedTime,
     this.weight = 0,
     this.active = false,
-    this.isPrescribed = false,
+    this.isAttendedByDoctor = false,
     this.isTreatmentActiveStream = false,
     this.vitals,
     List<DiagnosisModel>? diagnosis,
@@ -70,7 +70,7 @@ class VisitModel {
     completedTime = ParsingHelper.parseTimestampMethod(map['completedTime']);
     weight = ParsingHelper.parseDoubleMethod(map['weight']);
     active = ParsingHelper.parseBoolMethod(map['active']);
-    isPrescribed = ParsingHelper.parseBoolMethod(map['isPrescribed']);
+    isAttendedByDoctor = ParsingHelper.parseBoolMethod(map['isAttendedByDoctor']);
     isTreatmentActiveStream = ParsingHelper.parseBoolMethod(map['isTreatmentActiveStream']);
 
 
@@ -153,7 +153,7 @@ class VisitModel {
       "weight" : weight,
       "active" : active,
       "isTreatmentActiveStream" : isTreatmentActiveStream,
-      "isPrescribed" : isPrescribed,
+      "isAttendedByDoctor" : isAttendedByDoctor,
       "diagnosis" : diagnosis.map((e) => e.toMap(toJson: toJson)).toList(),
       "visitBillings" : visitBillings.map((key, value) => MapEntry(key, value.toMap(toJson: toJson))),
       "treatmentActivity" : treatmentActivity.map((e) => e.toMap(toJson: toJson)).toList(),
