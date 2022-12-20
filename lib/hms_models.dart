@@ -46,9 +46,9 @@ export 'configs/typedefs.dart';
 
   //region Visit Model
     //region Admission
-    export 'models/visit_model/admission/admission_model.dart';
-    export 'models/visit_model/admission/observation_data_model.dart';
-    export 'models/visit_model/admission/observation_model.dart';
+    export 'models/visit_model/admit/admit_model.dart';
+    export 'models/visit_model/admit/observation_data_model.dart';
+    export 'models/visit_model/admit/observation_model.dart';
     //endregion
 
     //region Diagnosis

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hms_models/hms_models.dart' show ParsingHelper, MyUtils, VitalsModel, DiagnosisModel, VisitBillingModel, PharmaBillingModel,
-        PatientMetaModel, TreatmentActivityModel, AdmissionModel;
+        PatientMetaModel, TreatmentActivityModel, AdmitModel;
 
 class VisitModel {
   String id = "", patientId = "", patientName = "", description = "", previousVisitId = "", currentDoctorId = "", currentDoctorName = "", hospitalId = "";
@@ -15,7 +15,7 @@ class VisitModel {
   PatientMetaModel? patientMetaModel;
   List<TreatmentActivityModel> treatmentActivity = <TreatmentActivityModel>[];
   List<TreatmentActivityModel> treatmentActivityDetailedLog = <TreatmentActivityModel>[];
-  AdmissionModel? admissionModel;
+  AdmitModel? admitModel;
 
   VisitModel({
     this.id = "",
@@ -42,7 +42,7 @@ class VisitModel {
     this.patientMetaModel,
     List<TreatmentActivityModel>? treatmentActivity,
     List<TreatmentActivityModel>? treatmentActivityDetailedLog,
-    this.admissionModel,
+    this.admitModel,
   }) {
     this.doctors = doctors ?? <String, String>{};
     this.diagnosis = diagnosis ?? <DiagnosisModel>[];
@@ -140,9 +140,9 @@ class VisitModel {
       patientMetaModel = PatientMetaModel.fromMap(patientMetaMap);
     }
 
-    Map<String, dynamic> admissionMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['admissionModel']);
-    if(admissionMap.isNotEmpty) {
-      admissionModel = AdmissionModel.fromMap(admissionMap);
+    Map<String, dynamic> admitMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['admitModel']);
+    if(admitMap.isNotEmpty) {
+      admitModel = AdmitModel.fromMap(admitMap);
     }
   }
 
@@ -171,7 +171,7 @@ class VisitModel {
       "pharmaBilling" : pharmaBilling?.toMap(toJson: toJson),
       "patientMetaModel" : patientMetaModel?.toMap(toJson: toJson),
       "vitals" : vitals?.toMap(toJson: toJson),
-      "admissionModel" : admissionModel?.toMap(toJson: toJson),
+      "admitModel" : admitModel?.toMap(toJson: toJson),
     };
   }
 

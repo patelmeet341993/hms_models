@@ -1,11 +1,11 @@
 import 'package:hms_models/hms_models.dart';
 
-class AdmissionModel {
+class AdmitModel {
   List<ObservationsDataModel> observationDataList = [];
 
-  AdmissionModel({this.observationDataList = const []});
+  AdmitModel({this.observationDataList = const []});
 
-  AdmissionModel.fromMap(Map<String, dynamic> map) {
+  AdmitModel.fromMap(Map<String, dynamic> map) {
     List<ObservationsDataModel> observationDataModelList = <ObservationsDataModel>[];
 
     List<Map> observationDataListMapList = ParsingHelper.parseListMethod<dynamic, Map>(map['observations']);
