@@ -24,7 +24,6 @@ export 'configs/typedefs.dart';
 //endregion
 
 //region Models
-
   //region Admin User
   export 'models/admin_user/admin_user_model.dart';
   //endregion
@@ -37,11 +36,20 @@ export 'configs/typedefs.dart';
   export 'models/patient/patient_model.dart';
   //endregion
 
-  //region Visit Model
+  //region Property Model
+  export 'models/property/property_model.dart';
+  //endregion
+
+  //region QR Code Model
   export 'models/qr_code/qr_code_data_model.dart';
   //endregion
 
   //region Visit Model
+    //region Admission
+    export 'models/visit_model/admission/admission_model.dart';
+    export 'models/visit_model/admission/observation_data_model.dart';
+    export 'models/visit_model/admission/observation_model.dart';
+    //endregion
 
     //region Diagnosis
     export 'models/visit_model/diagnosis/diagnosis_model.dart';
