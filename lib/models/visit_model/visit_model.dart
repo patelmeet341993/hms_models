@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hms_models/hms_models.dart' show ParsingHelper, MyUtils, VitalsModel, DiagnosisModel, VisitBillingModel, PharmaBillingModel,
-        PatientMetaModel, TreatmentActivityModel;
+        PatientMetaModel, TreatmentActivityModel, AdmissionModel;
 
 class VisitModel {
   String id = "", patientId = "", patientName = "", description = "", previousVisitId = "", currentDoctorId = "", currentDoctorName = "", hospitalId = "";
@@ -8,13 +8,14 @@ class VisitModel {
   Timestamp? createdTime, updatedTime, completedTime;
   double weight = 0;
   VitalsModel? vitals;
-  bool active = false,isAttendedByDoctor = false,isTreatmentActiveStream = false;
+  bool active = false,isAttendedByDoctor = false,isTreatmentActiveStream = false, isAdmitted = false;
   List<DiagnosisModel> diagnosis = <DiagnosisModel>[];
   Map<String, VisitBillingModel> visitBillings = {};
   PharmaBillingModel? pharmaBilling;
   PatientMetaModel? patientMetaModel;
   List<TreatmentActivityModel> treatmentActivity = <TreatmentActivityModel>[];
   List<TreatmentActivityModel> treatmentActivityDetailedLog = <TreatmentActivityModel>[];
+  AdmissionModel? admissionModel;
 
   VisitModel({
     this.id = "",
@@ -33,6 +34,7 @@ class VisitModel {
     this.active = false,
     this.isAttendedByDoctor = false,
     this.isTreatmentActiveStream = false,
+    this.isAdmitted = false,
     this.vitals,
     List<DiagnosisModel>? diagnosis,
     Map<String, VisitBillingModel>? visitBillings,
@@ -40,6 +42,7 @@ class VisitModel {
     this.patientMetaModel,
     List<TreatmentActivityModel>? treatmentActivity,
     List<TreatmentActivityModel>? treatmentActivityDetailedLog,
+    this.admissionModel,
   }) {
     this.doctors = doctors ?? <String, String>{};
     this.diagnosis = diagnosis ?? <DiagnosisModel>[];
@@ -72,6 +75,7 @@ class VisitModel {
     active = ParsingHelper.parseBoolMethod(map['active']);
     isAttendedByDoctor = ParsingHelper.parseBoolMethod(map['isAttendedByDoctor']);
     isTreatmentActiveStream = ParsingHelper.parseBoolMethod(map['isTreatmentActiveStream']);
+    isAdmitted = ParsingHelper.parseBoolMethod(map['isAdmitted']);
 
 
     List<DiagnosisModel> diagnosisList = <DiagnosisModel>[];
@@ -127,13 +131,18 @@ class VisitModel {
     }
 
     Map<String, dynamic> vitalsMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['vitals']);
-    if(pharmaBillingsMap.isNotEmpty) {
+    if(vitalsMap.isNotEmpty) {
       vitals = VitalsModel.fromMap(vitalsMap);
     }
 
-    Map<String, dynamic> patientmetaMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['patientMetaModel']);
-    if(pharmaBillingsMap.isNotEmpty) {
-      patientMetaModel = PatientMetaModel.fromMap(patientmetaMap);
+    Map<String, dynamic> patientMetaMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['patientMetaModel']);
+    if(patientMetaMap.isNotEmpty) {
+      patientMetaModel = PatientMetaModel.fromMap(patientMetaMap);
+    }
+
+    Map<String, dynamic> admissionMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['admissionModel']);
+    if(admissionMap.isNotEmpty) {
+      admissionModel = AdmissionModel.fromMap(admissionMap);
     }
   }
 
@@ -153,6 +162,7 @@ class VisitModel {
       "weight" : weight,
       "active" : active,
       "isTreatmentActiveStream" : isTreatmentActiveStream,
+      "isAdmitted" : isAdmitted,
       "isAttendedByDoctor" : isAttendedByDoctor,
       "diagnosis" : diagnosis.map((e) => e.toMap(toJson: toJson)).toList(),
       "visitBillings" : visitBillings.map((key, value) => MapEntry(key, value.toMap(toJson: toJson))),
@@ -161,6 +171,7 @@ class VisitModel {
       "pharmaBilling" : pharmaBilling?.toMap(toJson: toJson),
       "patientMetaModel" : patientMetaModel?.toMap(toJson: toJson),
       "vitals" : vitals?.toMap(toJson: toJson),
+      "admissionModel" : admissionModel?.toMap(toJson: toJson),
     };
   }
 
