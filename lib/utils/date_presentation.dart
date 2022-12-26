@@ -29,7 +29,7 @@ abstract class DatePresentation {
 
   static String ddMMMMyyyyTimeStamp(Timestamp timeStamp) {
     DateTime dateTime = timeStamp.toDate();
-    return DateFormat('dd, MMMM yyyy').format(dateTime);
+    return DateFormat('dd MMMM yyyy').format(dateTime);
   }
 
   static String hhMM(Timestamp timeStamp) {
