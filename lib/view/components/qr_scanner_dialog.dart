@@ -35,12 +35,12 @@ class QRScannerDialog extends StatelessWidget {
             Lottie.asset('assets/lotties/scan.json',),
             Positioned(
               top: 0,
-              right: 0,
+              right: 20,
               child: InkWell(
                   onTap: (){
                     Navigator.pop(context);
                   },
-                  child: Icon(Icons.close,color: Colors.white,)),
+                  child: Icon(Icons.close,color: Colors.black,size: 18,)),
             ),
 
           ],
