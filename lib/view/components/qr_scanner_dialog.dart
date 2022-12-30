@@ -31,13 +31,13 @@ class QRScannerDialog extends StatelessWidget {
             ),
             Lottie.asset('assets/lotties/scan.json',),
             Positioned(
-              top: 0,
-              right: 0,
+              top: 10,
+              right: 10,
               child: InkWell(
                   onTap: (){
                     Navigator.pop(context);
                   },
-                  child: Icon(Icons.close,color: Colors.white,size: 18,)),
+                  child: Icon(Icons.close,color: Colors.white,size: 22,)),
             ),
 
           ],
