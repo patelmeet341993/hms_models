@@ -15,15 +15,6 @@ class QRScannerDialog extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    InkWell(
-                        onTap: (){
-                          Navigator.pop(context);
-                        },
-                        child: Icon(Icons.close,color: Colors.white,))
-                  ],),
                 MobileScanner(
                   allowDuplicates: false,
                   controller: MobileScannerController(facing: CameraFacing.front, torchEnabled: true),
@@ -49,3 +40,14 @@ class QRScannerDialog extends StatelessWidget {
     );
   }
 }
+
+
+// Row(
+// mainAxisAlignment: MainAxisAlignment.end,
+// children: [
+// InkWell(
+// onTap: (){
+// Navigator.pop(context);
+// },
+// child: Icon(Icons.close,color: Colors.white,))
+// ],),
