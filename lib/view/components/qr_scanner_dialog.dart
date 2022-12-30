@@ -11,29 +11,35 @@ class QRScannerDialog extends StatelessWidget {
       child: SizedBox(
         height: 500,
         width: 500,
-        child: Column(
+        child: Stack(
           children: [
-            Stack(
-              children: [
-                MobileScanner(
-                  allowDuplicates: false,
-                  controller: MobileScannerController(facing: CameraFacing.front, torchEnabled: true),
-                  onDetect: (Barcode barcode, MobileScannerArguments? args) {
-                    if (barcode.rawValue == null) {
-                      debugPrint('Failed to scan Barcode');
-                    }
-                    else {
-                      final String code = barcode.rawValue!;
-                      debugPrint('Barcode found! $code');
-                      if(code.isNotEmpty) {
-                        Navigator.pop(context,code);
-                      }
-                    }
-                  },
-                ),
-                Lottie.asset('assets/lotties/scan.json',),
-              ],
+            MobileScanner(
+              allowDuplicates: false,
+              controller: MobileScannerController(facing: CameraFacing.front, torchEnabled: true),
+              onDetect: (Barcode barcode, MobileScannerArguments? args) {
+                if (barcode.rawValue == null) {
+                  debugPrint('Failed to scan Barcode');
+                }
+                else {
+                  final String code = barcode.rawValue!;
+                  debugPrint('Barcode found! $code');
+                  if(code.isNotEmpty) {
+                    Navigator.pop(context,code);
+                  }
+                }
+              },
             ),
+            Lottie.asset('assets/lotties/scan.json',),
+            Positioned(
+              top: 20,
+              right: 20,
+              child: InkWell(
+                  onTap: (){
+                    Navigator.pop(context);
+                  },
+                  child: Icon(Icons.close,color: Colors.white,)),
+            ),
+
           ],
         ),
       ),
@@ -42,12 +48,3 @@ class QRScannerDialog extends StatelessWidget {
 }
 
 
-// Row(
-// mainAxisAlignment: MainAxisAlignment.end,
-// children: [
-// InkWell(
-// onTap: (){
-// Navigator.pop(context);
-// },
-// child: Icon(Icons.close,color: Colors.white,))
-// ],),
