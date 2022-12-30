@@ -8,47 +8,43 @@ class QRScannerDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              InkWell(
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                  child: Icon(Icons.close,color: Colors.white,))
-            ],),
-          SizedBox(
-            height: 500,
-            width: 500,
-            child: Column(
+      child: SizedBox(
+        height: 500,
+        width: 500,
+        child: Column(
+          children: [
+            Stack(
               children: [
-                Stack(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    MobileScanner(
-                      allowDuplicates: false,
-                      controller: MobileScannerController(facing: CameraFacing.front, torchEnabled: true),
-                      onDetect: (Barcode barcode, MobileScannerArguments? args) {
-                        if (barcode.rawValue == null) {
-                          debugPrint('Failed to scan Barcode');
-                        }
-                        else {
-                          final String code = barcode.rawValue!;
-                          debugPrint('Barcode found! $code');
-                          if(code.isNotEmpty) {
-                            Navigator.pop(context,code);
-                          }
-                        }
-                      },
-                    ),
-                    Lottie.asset('assets/lotties/scan.json',),
-                  ],
+                    InkWell(
+                        onTap: (){
+                          Navigator.pop(context);
+                        },
+                        child: Icon(Icons.close,color: Colors.white,))
+                  ],),
+                MobileScanner(
+                  allowDuplicates: false,
+                  controller: MobileScannerController(facing: CameraFacing.front, torchEnabled: true),
+                  onDetect: (Barcode barcode, MobileScannerArguments? args) {
+                    if (barcode.rawValue == null) {
+                      debugPrint('Failed to scan Barcode');
+                    }
+                    else {
+                      final String code = barcode.rawValue!;
+                      debugPrint('Barcode found! $code');
+                      if(code.isNotEmpty) {
+                        Navigator.pop(context,code);
+                      }
+                    }
+                  },
                 ),
+                Lottie.asset('assets/lotties/scan.json',),
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
