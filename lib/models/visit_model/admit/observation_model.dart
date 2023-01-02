@@ -23,9 +23,7 @@ class ObservationModel {
     values.clear();
     Map<String, dynamic> valuesMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['values']);
     valuesMap.forEach((key, value) {
-      if(value != null) {
         values[key] = value;
-      }
     });
   }
 
