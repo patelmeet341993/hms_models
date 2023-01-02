@@ -36,7 +36,7 @@ class ObservationModel {
       'value': value,
       'priority': priority,
       'note': note,
-      "values" : toJson ? values.map((key, value) => MapEntry(key, value.toDate().toIso8601String())) : values,
+      "values" : toJson ? values.map((key, value) => MapEntry(key, value)) : values,
     };
   }
 
