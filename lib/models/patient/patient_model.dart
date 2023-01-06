@@ -80,6 +80,24 @@ class PatientModel {
     };
   }
 
+  Map<String, dynamic> toMapForVisit({bool toJson = false}) {
+    return <String, dynamic>{
+      "id" : id,
+      "name" : name,
+      "profilePicture" : profilePicture,
+      "bloodGroup" : bloodGroup,
+      "gender" : gender,
+      "primaryMobile" : primaryMobile,
+      "dateOfBirth" : toJson ? dateOfBirth?.toDate().toIso8601String() : dateOfBirth,
+      "createdTime" : toJson ? createdTime?.toDate().toIso8601String() : createdTime,
+      "totalVisits" : totalVisits,
+      "active" : active,
+      "isProfileComplete" : isProfileComplete,
+      "userMobiles" : userMobiles.toSet().toList(),
+      "activeVisits" : toJson ? activeVisits.map((key, value) => MapEntry(key, value.toDate().toIso8601String())) : activeVisits,
+    };
+  }
+
   @override
   String toString({bool toJson = false}) {
     return toJson ? MyUtils.encodeJson(toMap(toJson: true)) : "PatientModel(${toMap(toJson: false)})";

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hms_models/hms_models.dart' show ParsingHelper, MyUtils, VitalsModel, DiagnosisModel, VisitBillingModel, PharmaBillingModel,
-        PatientMetaModel, TreatmentActivityModel, AdmitModel;
+import 'package:hms_models/hms_models.dart' show AdmitModel, DiagnosisModel, MyUtils, ParsingHelper, PatientMetaModel, PatientModel, PharmaBillingModel, TreatmentActivityModel, VisitBillingModel, VitalsModel;
 
 class VisitModel {
   String id = "", patientId = "", patientName = "", description = "", previousVisitId = "", currentDoctorId = "", currentDoctorName = "", hospitalId = "";
@@ -12,7 +11,7 @@ class VisitModel {
   List<DiagnosisModel> diagnosis = <DiagnosisModel>[];
   Map<String, VisitBillingModel> visitBillings = {};
   PharmaBillingModel? pharmaBilling;
-  PatientMetaModel? patientMetaModel;
+  PatientModel? patientModel;
   List<TreatmentActivityModel> treatmentActivity = <TreatmentActivityModel>[];
   List<TreatmentActivityModel> treatmentActivityDetailedLog = <TreatmentActivityModel>[];
   AdmitModel? admitModel;
@@ -39,7 +38,7 @@ class VisitModel {
     List<DiagnosisModel>? diagnosis,
     Map<String, VisitBillingModel>? visitBillings,
     this.pharmaBilling,
-    this.patientMetaModel,
+    this.patientModel,
     List<TreatmentActivityModel>? treatmentActivity,
     List<TreatmentActivityModel>? treatmentActivityDetailedLog,
     this.admitModel,
@@ -135,9 +134,9 @@ class VisitModel {
       vitals = VitalsModel.fromMap(vitalsMap);
     }
 
-    Map<String, dynamic> patientMetaMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['patientMetaModel']);
-    if(patientMetaMap.isNotEmpty) {
-      patientMetaModel = PatientMetaModel.fromMap(patientMetaMap);
+    Map<String, dynamic> patientMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['patientModel']);
+    if(patientMap.isNotEmpty) {
+      patientModel = PatientModel.fromMap(patientMap);
     }
 
     Map<String, dynamic> admitMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['admitModel']);
@@ -169,7 +168,7 @@ class VisitModel {
       "treatmentActivity" : treatmentActivity.map((e) => e.toMap(toJson: toJson)).toList(),
       "treatmentActivityDetailedLog" : treatmentActivityDetailedLog.map((e) => e.toMap(toJson: toJson)).toList(),
       "pharmaBilling" : pharmaBilling?.toMap(toJson: toJson),
-      "patientMetaModel" : patientMetaModel?.toMap(toJson: toJson),
+      "patientModel" : patientModel?.toMap(toJson: toJson),
       "vitals" : vitals?.toMap(toJson: toJson),
       "admitModel" : admitModel?.toMap(toJson: toJson),
     };
