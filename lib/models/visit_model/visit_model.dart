@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hms_models/hms_models.dart' show AdmitModel, DiagnosisModel, MyUtils, ParsingHelper, PatientMetaModel, PatientModel, PharmaBillingModel, TreatmentActivityModel, VisitBillingModel, VitalsModel;
 
 class VisitModel {
-  String id = "", patientId = "", patientName = "", description = "", previousVisitId = "", currentDoctorId = "", currentDoctorName = "", hospitalId = "";
+  String id = "", patientId = "", patientName = "", description = "", previousVisitId = "", currentDoctorId = "", currentDoctorName = "", hospitalId = "", hospitalName = "";
   Map<String, String> doctors = {};
   Timestamp? createdTime, updatedTime, completedTime;
-  double weight = 0;
+  double weight = 0, totalVisitAmount = 0;
   VitalsModel? vitals;
   bool active = false,isAttendedByDoctor = false,isTreatmentActiveStream = false, isAdmitted = false;
   List<DiagnosisModel> diagnosis = <DiagnosisModel>[];
@@ -25,11 +25,13 @@ class VisitModel {
     this.currentDoctorId = "",
     this.currentDoctorName = "",
     this.hospitalId = "",
+    this.hospitalName = "",
     Map<String, String>? doctors,
     this.createdTime,
     this.updatedTime,
     this.completedTime,
     this.weight = 0,
+    this.totalVisitAmount = 0,
     this.active = false,
     this.isAttendedByDoctor = false,
     this.isTreatmentActiveStream = false,
@@ -67,10 +69,12 @@ class VisitModel {
     currentDoctorId = ParsingHelper.parseStringMethod(map['currentDoctorId']);
     currentDoctorName = ParsingHelper.parseStringMethod(map['currentDoctorName']);
     hospitalId = ParsingHelper.parseStringMethod(map['hospitalId']);
+    hospitalName = ParsingHelper.parseStringMethod(map['hospitalName']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     updatedTime = ParsingHelper.parseTimestampMethod(map['updatedTime']);
     completedTime = ParsingHelper.parseTimestampMethod(map['completedTime']);
     weight = ParsingHelper.parseDoubleMethod(map['weight']);
+    totalVisitAmount = ParsingHelper.parseDoubleMethod(map['totalVisitAmount']);
     active = ParsingHelper.parseBoolMethod(map['active']);
     isAttendedByDoctor = ParsingHelper.parseBoolMethod(map['isAttendedByDoctor']);
     isTreatmentActiveStream = ParsingHelper.parseBoolMethod(map['isTreatmentActiveStream']);
@@ -155,10 +159,12 @@ class VisitModel {
       "currentDoctorId" : currentDoctorId,
       "currentDoctorName" : currentDoctorName,
       "hospitalId" : hospitalId,
+      "hospitalName" : hospitalName,
       "createdTime" : toJson ? createdTime?.toDate().toIso8601String() : createdTime,
       "updatedTime" : toJson ? updatedTime?.toDate().toIso8601String() : updatedTime,
       "completedTime" : toJson ? completedTime?.toDate().toIso8601String() : completedTime,
       "weight" : weight,
+      "totalVisitAmount" : totalVisitAmount,
       "active" : active,
       "isTreatmentActiveStream" : isTreatmentActiveStream,
       "isAdmitted" : isAdmitted,
