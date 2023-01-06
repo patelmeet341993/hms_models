@@ -34,13 +34,13 @@ class VisitController {
         createdTime: newDocumentDataModel.timestamp,
         weight: weight,
         active: true,
-        patientMetaModel: PatientMetaModel(
+        patientModel: PatientModel(
           id: patientModel.id,
           name: patientModel.name,
           gender: patientModel.gender,
           bloodGroup: patientModel.bloodGroup,
           dateOfBirth: patientModel.dateOfBirth,
-          userMobile: patientModel.primaryMobile,
+          userMobiles: [patientModel.primaryMobile],
           totalVisits: patientModel.totalVisits,
         ),
         isTreatmentActiveStream: true,
