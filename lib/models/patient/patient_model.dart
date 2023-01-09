@@ -5,6 +5,7 @@ import 'package:hms_models/hms_models.dart' show ParsingHelper, MyUtils;
 class PatientModel {
   String id = "", name = "", profilePicture = "", bloodGroup = "", gender = "", primaryMobile = "";
   Timestamp? dateOfBirth, createdTime;
+  double height=0.0,width=0.0;
   int totalVisits = 0;
   bool active = false, isProfileComplete = false;
   List<String> userMobiles = [];
@@ -22,6 +23,8 @@ class PatientModel {
     this.totalVisits = 0,
     this.active = false,
     this.isProfileComplete = false,
+    this.height=0.0,
+    this.width=0.0,
     List<String>? userMobiles,
     Map<String, Timestamp>? activeVisits,
    // this.visitDataHistory = const {},
@@ -49,6 +52,8 @@ class PatientModel {
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
     totalVisits = ParsingHelper.parseIntMethod(map['totalVisits']);
     active = ParsingHelper.parseBoolMethod(map['active']);
+    height = ParsingHelper.parseDoubleMethod(map['height']);
+    width = ParsingHelper.parseDoubleMethod(map['width']);
     isProfileComplete = ParsingHelper.parseBoolMethod(map['isProfileComplete']);
     userMobiles = ParsingHelper.parseListMethod<dynamic, String>(map['userMobiles']).toSet().toList();
 
@@ -74,6 +79,8 @@ class PatientModel {
       "createdTime" : toJson ? createdTime?.toDate().toIso8601String() : createdTime,
       "totalVisits" : totalVisits,
       "active" : active,
+      "height":height,
+      "width":width,
       "isProfileComplete" : isProfileComplete,
       "userMobiles" : userMobiles.toSet().toList(),
       "activeVisits" : toJson ? activeVisits.map((key, value) => MapEntry(key, value.toDate().toIso8601String())) : activeVisits,
@@ -92,6 +99,8 @@ class PatientModel {
       "createdTime" : toJson ? createdTime?.toDate().toIso8601String() : createdTime,
       "totalVisits" : totalVisits,
       "active" : active,
+      "height":height,
+      "width":width,
       "isProfileComplete" : isProfileComplete,
       "userMobiles" : userMobiles.toSet().toList(),
       "activeVisits" : toJson ? activeVisits.map((key, value) => MapEntry(key, value.toDate().toIso8601String())) : activeVisits,
