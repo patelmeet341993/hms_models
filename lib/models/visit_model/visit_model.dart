@@ -174,7 +174,7 @@ class VisitModel {
       "treatmentActivity" : treatmentActivity.map((e) => e.toMap(toJson: toJson)).toList(),
       "treatmentActivityDetailedLog" : treatmentActivityDetailedLog.map((e) => e.toMap(toJson: toJson)).toList(),
       "pharmaBilling" : pharmaBilling?.toMap(toJson: toJson),
-      "patientModel" : patientModel?.toMap(toJson: toJson),
+      "patientModel" : patientModel?.toMapForVisit(toJson: toJson),
       "vitals" : vitals?.toMap(toJson: toJson),
       "admitModel" : admitModel?.toMap(toJson: toJson),
     };
