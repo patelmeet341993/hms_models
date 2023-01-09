@@ -5,7 +5,7 @@ import 'package:hms_models/hms_models.dart' show ParsingHelper, MyUtils;
 class PatientModel {
   String id = "", name = "", profilePicture = "", bloodGroup = "", gender = "", primaryMobile = "";
   Timestamp? dateOfBirth, createdTime;
-  double height=0.0,width=0.0;
+  double height=0.0,weight=0.0;
   int totalVisits = 0;
   bool active = false, isProfileComplete = false;
   List<String> userMobiles = [];
@@ -24,7 +24,7 @@ class PatientModel {
     this.active = false,
     this.isProfileComplete = false,
     this.height=0.0,
-    this.width=0.0,
+    this.weight=0.0,
     List<String>? userMobiles,
     Map<String, Timestamp>? activeVisits,
    // this.visitDataHistory = const {},
@@ -53,7 +53,7 @@ class PatientModel {
     totalVisits = ParsingHelper.parseIntMethod(map['totalVisits']);
     active = ParsingHelper.parseBoolMethod(map['active']);
     height = ParsingHelper.parseDoubleMethod(map['height']);
-    width = ParsingHelper.parseDoubleMethod(map['width']);
+    weight = ParsingHelper.parseDoubleMethod(map['weight']);
     isProfileComplete = ParsingHelper.parseBoolMethod(map['isProfileComplete']);
     userMobiles = ParsingHelper.parseListMethod<dynamic, String>(map['userMobiles']).toSet().toList();
 
@@ -80,7 +80,7 @@ class PatientModel {
       "totalVisits" : totalVisits,
       "active" : active,
       "height":height,
-      "width":width,
+      "weight":weight,
       "isProfileComplete" : isProfileComplete,
       "userMobiles" : userMobiles.toSet().toList(),
       "activeVisits" : toJson ? activeVisits.map((key, value) => MapEntry(key, value.toDate().toIso8601String())) : activeVisits,
@@ -100,7 +100,7 @@ class PatientModel {
       "totalVisits" : totalVisits,
       "active" : active,
       "height":height,
-      "width":width,
+      "weight":weight,
       "isProfileComplete" : isProfileComplete,
       "userMobiles" : userMobiles.toSet().toList(),
       "activeVisits" : toJson ? activeVisits.map((key, value) => MapEntry(key, value.toDate().toIso8601String())) : activeVisits,
