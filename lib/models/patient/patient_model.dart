@@ -8,7 +8,7 @@ class PatientModel {
   double height=0.0,weight=0.0;
   int totalVisits = 0;
   bool active = false, isProfileComplete = false;
-  List<String> userMobiles = [];
+  List<String> userMobiles = <String>[], visitIds = <String>[];
   Map<String, Timestamp> activeVisits = <String, Timestamp>{};
 
   PatientModel({
@@ -26,10 +26,12 @@ class PatientModel {
     this.height=0.0,
     this.weight=0.0,
     List<String>? userMobiles,
+    List<String>? visitIds,
     Map<String, Timestamp>? activeVisits,
    // this.visitDataHistory = const {},
   }) {
     this.userMobiles = userMobiles ?? <String>[];
+    this.visitIds = visitIds ?? <String>[];
     this.activeVisits = activeVisits ?? <String, Timestamp>{};
   }
 
@@ -56,6 +58,7 @@ class PatientModel {
     weight = ParsingHelper.parseDoubleMethod(map['weight']);
     isProfileComplete = ParsingHelper.parseBoolMethod(map['isProfileComplete']);
     userMobiles = ParsingHelper.parseListMethod<dynamic, String>(map['userMobiles']).toSet().toList();
+    visitIds = ParsingHelper.parseListMethod<dynamic, String>(map['visitIds']).toSet().toList();
 
     activeVisits.clear();
     Map<String, dynamic> activeVisitsMap = ParsingHelper.parseMapMethod<dynamic, dynamic, String, dynamic>(map['activeVisits']);
@@ -83,6 +86,7 @@ class PatientModel {
       "weight":weight,
       "isProfileComplete" : isProfileComplete,
       "userMobiles" : userMobiles.toSet().toList(),
+      "visitIds" : visitIds.toSet().toList(),
       "activeVisits" : toJson ? activeVisits.map((key, value) => MapEntry(key, value.toDate().toIso8601String())) : activeVisits,
     };
   }
@@ -97,13 +101,9 @@ class PatientModel {
       "primaryMobile" : primaryMobile,
       "dateOfBirth" : toJson ? dateOfBirth?.toDate().toIso8601String() : dateOfBirth,
       "createdTime" : toJson ? createdTime?.toDate().toIso8601String() : createdTime,
-      "totalVisits" : totalVisits,
-      "active" : active,
       "height":height,
       "weight":weight,
-      "isProfileComplete" : isProfileComplete,
       "userMobiles" : userMobiles.toSet().toList(),
-      "activeVisits" : toJson ? activeVisits.map((key, value) => MapEntry(key, value.toDate().toIso8601String())) : activeVisits,
     };
   }
 
