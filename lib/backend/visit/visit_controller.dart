@@ -132,6 +132,8 @@ class VisitController {
 
       dataResponseModel = DataResponseModel<VisitModel>(
         appErrorModel: AppErrorModel(
+          code: AppErrorCodes.someErrorOccurredWhileCreatingVisit,
+          message: AppErrorMessages.someErrorOccurredWhileCreatingVisit,
           exception: e,
           stackTrace: s,
         ),
