@@ -62,6 +62,7 @@ class VisitController {
         bool isHavingActiveVisitForSameHospital = false;
 
         for(VisitModel visitModel in visits.values) {
+          MyPrint.printOnConsole("visit id:${visitModel.id}, hospitalId:${visitModel.hospitalId}");
           if(visitModel.hospitalId == hospitalId) {
             isHavingActiveVisitForSameHospital = true;
             break;
