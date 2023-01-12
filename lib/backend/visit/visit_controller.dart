@@ -1,3 +1,5 @@
+import 'package:hms_models/backend/admin_user/admin_user_controller.dart';
+
 import '../../hms_models.dart';
 
 class VisitController {
@@ -61,6 +63,7 @@ class VisitController {
       await FirebaseNodes.visitDocumentReference(visitId: visitModel.id).set(visitModel.toMap(),);
 
       PatientController().addVisitIdInActiveVisits(patientId: patientModel.id, visitId: visitModel.id);
+      AdminUserController().addVisitIdInPatientsQueue(doctorId: doctorId, visitId: visitModel.id);
 
       return visitModel;
     }
