@@ -7,6 +7,7 @@ class AdminUserModel {
   Map<String, dynamic> scannerData = <String, dynamic>{};
   bool isActive = false, isUnDeletable = false;
   Timestamp? createdTime;
+  List<String> patientQueueForDoctor = <String>[];
 
   AdminUserModel({
     this.id = "",
@@ -21,8 +22,10 @@ class AdminUserModel {
     this.isActive = false,
     this.isUnDeletable = false,
     this.createdTime,
+    List<String>? patientQueueForDoctor,
   }) {
     this.scannerData = scannerData ?? <String, dynamic>{};
+    this.patientQueueForDoctor = patientQueueForDoctor ?? <String>[];
   }
 
   AdminUserModel.fromMap(Map<String, dynamic> map) {
@@ -46,6 +49,7 @@ class AdminUserModel {
     isActive = ParsingHelper.parseBoolMethod(map['isActive']);
     isUnDeletable = ParsingHelper.parseBoolMethod(map['isUnDeletable']);
     createdTime = ParsingHelper.parseTimestampMethod(map['createdTime']);
+    patientQueueForDoctor = ParsingHelper.parseListMethod<dynamic, String>(map['patientQueueForDoctor']);
   }
 
   Map<String, dynamic> toMap({bool toJson = false}) {
@@ -62,6 +66,7 @@ class AdminUserModel {
       "isActive": isActive,
       "isUnDeletable": isUnDeletable,
       "createdTime": toJson ? createdTime?.toDate().toIso8601String() : createdTime,
+      "patientQueueForDoctor": patientQueueForDoctor,
     };
   }
 
