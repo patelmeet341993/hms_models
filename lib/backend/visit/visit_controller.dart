@@ -20,6 +20,7 @@ class VisitController {
     required String doctorId,
     required String doctorName,
     required String hospitalId,
+    required String hospitalName,
     required String patientId,
     String description = "",
     double weight = 0,
@@ -89,6 +90,7 @@ class VisitController {
         patientName: patientModel.name,
         description: description,
         hospitalId: hospitalId,
+        hospitalName: hospitalName,
         currentDoctorId: doctorId,
         currentDoctorName: doctorName,
         doctors: {
